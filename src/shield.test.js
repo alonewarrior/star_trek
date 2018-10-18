@@ -3,6 +3,30 @@ describe('shield', function() {
     beforeEach(() => {
         shield = new Shield();
     });
+    
+    
+    it('should not be damaged', function () {
+        expect(shield.isDamaged).toBe(false);
+    });
+    
+    it('should lower shield if shield is raised and energy level is depleted', function () {
+        shield.raise();
+        shield.hit(9001);
+        expect(shield.energyLevel).toBe(0);
+        expect(shield.isUp).toBe(false);
+    });
+    
+    it('should absorb damage if raised', function () {
+        shield.raise();
+        shield.hit(500);
+        expect(shield.energyLevel).toBe(8501);
+    });
+    
+    it('should not absorb damage if not raised', function () {
+        shield.hit(500);
+        expect(shield.energyLevel).toBe(9001);
+    });
+    
     it('should have a minimum of 0', function() {
         shield.transferEnergy(-9002);
         expect(shield.energyLevel).toBe(0);
