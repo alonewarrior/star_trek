@@ -4,7 +4,7 @@ describe('ship', () => {
     ship = new Ship();
   });
   describe('transfer energy', () => {
-    xit('should transfer energy to shield of -9002', () => {
+    x`it('should transfer energy to shield of -9002', () => {
       ship.transferEnergyBetweenShield(-9002);
       expect(ship.energyReserve).toBe(891000);
     });
